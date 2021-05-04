@@ -2,9 +2,13 @@
 
 - Api Curso Desarrollo Web [Link](https://github.com/JuanPh2002/API-SEG4.git)
 
-Herramientas:
+## Herramientas:
 * Node JS
 * Postman
 
-Desarrollada por:
+## Librerías
+* https://expressjs.com/es/ - Exprees JS - 'npm install express'
+
+
+## Desarrollada por:
 * Juan Pablo Arroyave 
