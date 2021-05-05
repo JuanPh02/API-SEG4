@@ -7,9 +7,19 @@ const PostgresService = require('../services/postgres.service');
  * @param {Response} res 
  */
 const getPersons = (req, res) => {
-    res.send("Personas, si señor y cambiaoo");
+    return res.send("Personas, si señor y cambiaoo");
 };
 
-module.exports = {
-    getPersons
+const createPerson = (req, res) => {
+    return res.send("Create Person");
 }
+
+const updatePerson = (req, res) => {
+    return res.send("Update Person");
+}
+
+const deletePerson = (req, res) => {
+    return res.send("Delete Person");
+}
+
+module.exports = { getPersons, createPerson, updatePerson, deletePerson };
