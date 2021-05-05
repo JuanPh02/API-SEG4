@@ -12,7 +12,11 @@ const getPersons = async(req, res) => {
         let sql = 'SELECT * FROM persons';
         let result = await _pg.executeSql(sql);
         let rows = result.rows;
-        return res.send(rows);
+        return res.send({
+            ok: true,
+            message: "Personas consultadas",
+            content: rows,
+        });
     } catch {
         return res.send({
             ok: false,
