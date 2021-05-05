@@ -4,8 +4,9 @@ const _personsController = require("../controllers/persons.controller");
 
 router
     .get('/persons', _personsController.getPersons)
+    .get('/persons/:id', _personsController.getUsersById)
     .post('/persons', _personsController.createPerson)
-    .put('/persons', _personsController.updatePerson)
-    .delete('/persons', _personsController.deletePerson);
+    .put('/persons/:id', _personsController.updatePerson)
+    .delete('/persons/:id', _personsController.deletePerson);
 
 module.exports = router;
