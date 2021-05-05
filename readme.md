@@ -8,7 +8,8 @@
 
 ## Librerías
 * https://expressjs.com/es/ - Exprees JS - 'npm install express'
-
+* https://www.npmjs.com/package/nodemon - Nodemon - 'npm install -g nodemon'
+* https://node-postgres.com - Node Postgres - 'npm install pg'
 
 ## Desarrollada por:
 * Juan Pablo Arroyave 
