@@ -1,8 +1,8 @@
 const { response } = require('express');
 const PostgresService = require('../services/postgres.service');
-//const emailHtml = require('../../static')
 const _pg = new PostgresService();
 const _email = require('../services/email.service');
+const _excel = require('../services/excel.service');
 
 /**
  * Método para consultar todas las personas
@@ -35,7 +35,7 @@ const getPersons = async(req, res) => {
  * @param {Response} res 
  * @returns 
  */
-const getUsersById = async(req, res) => {
+const getPersonById = async(req, res) => {
     try {
         const id = req.params.id;
         let sql = `SELECT * FROM persons WHERE id = ${id}`;
@@ -50,6 +50,25 @@ const getUsersById = async(req, res) => {
         });
     }
 };
+
+const getReport = async(req, res) => {
+    try {
+        let sql = 'SELECT * FROM persons';
+        let result = await _pg.executeSql(sql);
+        let rows = result.rows;
+        _excel.toExcel(rows);
+        return res.send({
+            ok: true,
+            message: "Reporte creado correctamente",
+        });
+    } catch (error) {
+        return res.send({
+            ok: false,
+            message: "Ha ocurrido un error",
+            content: error
+        });
+    }
+}
 
 /**
  * Metodo para crear una nueva persona
@@ -126,4 +145,4 @@ const deletePerson = async(req, res) => {
     }
 }
 
-module.exports = { getPersons, getUsersById, createPerson, updatePerson, deletePerson };
+module.exports = { getPersons, getPersonById, getReport, createPerson, updatePerson, deletePerson };

@@ -11,6 +11,7 @@
 * https://www.npmjs.com/package/nodemon - Nodemon - 'npm install -g nodemon'
 * https://node-postgres.com - Node Postgres - 'npm install pg'
 * https://nodemailer.com/ - Nodemailer - 'npm install nodemailer'
+* https://www.npmjs.com/package/exceljs - Excel JS - 'npm install exceljs'
 
 ## Desarrollada por:
 * Juan Pablo Arroyave 
