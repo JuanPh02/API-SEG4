@@ -16,7 +16,6 @@ const toExcel = (rows) => {
         sheet.addRows(rows);
         //Guardamos el archivo
         save();
-        return 1;
     } catch (error) {
         console.log("Error al crear el reporte");
     }

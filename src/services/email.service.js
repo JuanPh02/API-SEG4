@@ -29,7 +29,7 @@ const sendEmail = async(person) => {
         <tbody>
             <tr>
                 <td align="center" bgcolor="#5033DB" width="300" height="150">
-                    <p style="font-family: 'Trebuchet MS'; font-size: 28px; color: #ffffff;">BIENVENIDO ${name}</p>
+                    <p style="font-family: 'Trebuchet MS'; font-size: 28px; color: #ffffff;">BIENVENIDO ${person.name}</p>
                     <br>
                     <p style="color: #bdbdbd; font-size: 16px;" ;>Gracias por registrarte para estar en contacto con MegaCell Medellín.</p>
                 </td>
@@ -55,7 +55,7 @@ const sendEmail = async(person) => {
             </tr>
             <tr>
                 <td align="center" bgcolor="#26A4D3" height="60px" style="font-family: 'Cambria', 'Cochin';">
-                    &reg; &nbsp; MegaCell, Medellin - 2021<br> Visita nuestra página web ¯\_(ツ)_/¯
+                    &reg; &nbsp; MegaCell, Medellin - 2021<br> Visita nuestra página web  ¯\_(ツ)_/¯
                 </td>
             </tr>
             <tr>
