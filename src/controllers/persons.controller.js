@@ -1,6 +1,8 @@
 const { response } = require('express');
 const PostgresService = require('../services/postgres.service');
+//const emailHtml = require('../../static')
 const _pg = new PostgresService();
+const _email = require('../services/email.service');
 
 /**
  * Método para consultar todas las personas
@@ -58,14 +60,16 @@ const getUsersById = async(req, res) => {
 const createPerson = async(req, res) => {
     try {
         let person = req.body;
-        let sql = `INSERT INTO persons (name, email) VALUES ('${person.name}', '${person.email}')`;
+        let sql = `INSERT INTO persons (name, email) VALUES ('${person.name}', '${person.email}');`;
         let result = await _pg.executeSql(sql);
-        console.log(result);
+        if (result.rowCount == 1) {
+            _email.sendEmail(person);
+        }
         return res.send({
-            ok: true,
-            message: "Persona creada correctamente",
+            ok: result.rowCount == 1,
+            message: result.rowCount == 1 ? "La persona ha sido creada" : "La persona no fue creada",
             content: person
-        })
+        });
     } catch (error) {
         return res.send({
             ok: false,
@@ -87,7 +91,6 @@ const updatePerson = async(req, res) => {
         let person = req.body;
         let sql = `UPDATE persons SET name = '${person.name}', email = '${person.email}' WHERE id = ${id}`;
         let result = await _pg.executeSql(sql);
-        console.log(result);
         return res.send({
             ok: result.rowCount == 1,
             message: result.rowCount == 1 ? "La persona fue actualizada correctamente" : "La persona no pudo ser actualizada",
@@ -113,7 +116,6 @@ const deletePerson = async(req, res) => {
         const id = req.params.id;
         let sql = `DELETE FROM persons WHERE id = ${id}`;
         let result = await _pg.executeSql(sql);
-        console.log(result);
         res.send(`Persona ${id} eliminada correctamente`);
     } catch (error) {
         return res.send({
